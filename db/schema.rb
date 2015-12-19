@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151216180315) do
+ActiveRecord::Schema.define(version: 20151218195735) do
 
   create_table "posts", force: :cascade do |t|
     t.string   "title"
@@ -35,12 +35,6 @@ ActiveRecord::Schema.define(version: 20151216180315) do
   add_index "replies", ["post_id"], name: "index_replies_on_post_id"
   add_index "replies", ["user_id"], name: "index_replies_on_user_id"
 
-  create_table "roles", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "topics", force: :cascade do |t|
     t.string   "name"
     t.integer  "post_count"
@@ -63,11 +57,9 @@ ActiveRecord::Schema.define(version: 20151216180315) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.integer  "role_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-  add_index "users", ["role_id"], name: "index_users_on_role_id"
 
 end
