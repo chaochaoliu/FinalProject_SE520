@@ -1,4 +1,5 @@
 class Users::SessionsController < Devise::SessionsController
+  skip_authorization_check
 # before_filter :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
@@ -22,4 +23,10 @@ class Users::SessionsController < Devise::SessionsController
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.for(:sign_in) << :attribute
   # end
+  
+  # authorize! :assign_roles, @user if params[:user][:assign_roles]
+
+  def user_params
+  params.require(:user).permit(:name, :email, :password, :password_confirmation, :role)
+end
 end

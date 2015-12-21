@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   ROLES = %i[admin manager regular_user guest]
+  
   belongs_to :role
   has_many :replies
   has_many :posts

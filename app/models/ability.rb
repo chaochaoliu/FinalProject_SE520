@@ -20,6 +20,8 @@ class Ability
       else
         can :read, :all
       end
+
+      can :assign_roles, User if user.admin?
     #
     # The first argument to `can` is the action you are giving the user
     # permission to do.
